@@ -1,0 +1,9 @@
+{
+  "fixed_tenant_id": "INTEGRATION-TEST-AWS",
+  "mappings": {
+    "properties": {
+      "title": { "type": "text" },
+      "user": { "type": "text", "index_prefixes": {} }
+    }
+  }
+}

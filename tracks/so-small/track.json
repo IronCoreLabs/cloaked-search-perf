@@ -1,0 +1,55 @@
+{% import "rally.helpers" as rally with context %}
+{
+  "version": 2,
+  "description": "Tracker-generated track for so-small",
+  "indices": [
+    {
+      "name": "try_cloaked_search",
+      "body": "try_cloaked_search.json"
+    }
+  ],
+  "corpora": [
+    {
+      "name": "try_cloaked_search",
+      "documents": [
+        {
+          "target-index": "try_cloaked_search",
+          "source-file": "try_cloaked_search-documents.json.bz2",
+          "document-count": 126878,
+          "compressed-bytes": 21531374,
+          "uncompressed-bytes": 83904267
+        }
+      ]
+    }
+  ],
+  "schedule": [
+    {
+      "operation": "delete-index"
+    },
+    {
+      "operation": {
+        "operation-type": "create-index",
+        "settings": {{index_settings | default({}) | tojson}}
+      }
+    },
+    {
+      "operation": {
+        "operation-type": "cluster-health",
+        "index": "try_cloaked_search",
+        "request-params": {
+          "wait_for_status": "{{cluster_health | default('yellow')}}",
+          "wait_for_no_relocating_shards": "true"
+        },
+        "retry-until-success": true
+      }
+    },
+    {
+      "operation": {
+        "operation-type": "bulk",
+        "bulk-size": {{bulk_size | default(50)}},
+        "ingest-percentage": {{ingest_percentage | default(100)}}
+      },
+      "clients": {{bulk_indexing_clients | default(8)}}
+    }
+  ]
+}

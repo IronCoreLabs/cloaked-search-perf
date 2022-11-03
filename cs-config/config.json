@@ -1,0 +1,25 @@
+{
+  "search_service_url": "http://es01:9200",
+"tsp_config": {
+  "url": "http://tsp-service:7777",
+  "api_keypath": "/app/test.key"
+},
+  "global_settings": {
+    "analysis": {
+      "analyzer": {
+        "my_edge_ngram": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["longer_edge_ngram"]
+        }
+      },
+      "filter": {
+        "longer_edge_ngram": {
+          "type": "edge_ngram",
+          "min_gram": 1,
+          "max_gram": 15
+        }
+      }
+    }
+  }
+}
