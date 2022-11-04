@@ -29,7 +29,7 @@ Note that this also binds to the local port 9200 in case you want to poke at the
 Start up TSP:
 
 ```bash
-docker rm tsp-service; docker run --name tsp-service --env-file tsp-config/tsp.env --net elastic gcr.io/ironcore-images/tenant-security-proxy:4
+docker stop tsp-service; docker rm tsp-service; docker run --name tsp-service --env-file tsp-config/tsp.env --net elastic gcr.io/ironcore-images/tenant-security-proxy:4
 ```
 
 Start up Cloaked Search:
