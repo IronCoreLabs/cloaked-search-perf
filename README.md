@@ -46,7 +46,7 @@ gcr.io/ironcore-images/cloaked-search:2.0.0-RC1
 Run rally against cs01:
 
 ```bash
- docker run --net elastic \
+docker run --net elastic \
 --mount type=bind,src="$(pwd)"/tracks,target=/tracks \
 elastic/rally race --track-path=/tracks/so-small --test-mode --pipeline=benchmark-only --target-hosts=cs01:8675
 ```
