@@ -5,11 +5,11 @@
 First, decrypt the keys.
 
 ```bash
-ironhide file decrypt cs-config/test.key.iron
+ironhide file decrypt cs-config/test.key.iron -o cs-config/test.key
 ```
 
 ```bash
-ironhide file decrypt tsp-config/tsp.env.iron
+ironhide file decrypt tsp-config/tsp.env.iron -o tsp-config/tsp.env
 ```
 
 Create a shared docker network:
