@@ -1,0 +1,56 @@
+{% import "rally.helpers" as rally with context %}
+{
+  "version": 2,
+  "description": "Tracker-generated track for so500k",
+  "indices": [
+    {
+      "name": "so500k",
+      "body": "so500k.json"
+    }
+  ],
+  "corpora": [
+    {
+      "name": "so500k",
+      "base-url": "https://storage.googleapis.com/rally-datasets/so-500k",
+      "documents": [
+        {
+          "target-index": "so500k",
+          "source-file": "so-documents.json.bz2",
+          "document-count": 559050,
+          "compressed-bytes": 615397588,
+          "uncompressed-bytes": 1291998069
+        }
+      ]
+    }
+  ],
+  "schedule": [
+    {
+      "operation": "delete-index"
+    },
+    {
+      "operation": {
+        "operation-type": "create-index",
+        "settings": {{index_settings | default({}) | tojson}}
+      }
+    },
+    {
+      "operation": {
+        "operation-type": "cluster-health",
+        "index": "so500k",
+        "request-params": {
+          "wait_for_status": "{{cluster_health | default('green')}}",
+          "wait_for_no_relocating_shards": "true"
+        },
+        "retry-until-success": true
+      }
+    },
+    {
+      "operation": {
+        "operation-type": "bulk",
+        "bulk-size": {{bulk_size | default(50)}},
+        "ingest-percentage": {{ingest_percentage | default(100)}}
+      },
+      "clients": {{bulk_indexing_clients | default(3)}}
+    }
+  ]
+}
