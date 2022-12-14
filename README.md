@@ -24,7 +24,7 @@ Note that this also binds to the local port 9200 in case you want to poke at the
 Run rally against cs, repeat each time you want to run it:
 
 ```bash
-docker compose run test-runner race --track-path=/tracks/so-small --test-mode --pipeline=benchmark-only --target-hosts=cs:8675
+docker compose run test-runner race --track-path=/tracks/so500k --test-mode --pipeline=benchmark-only --target-hosts=cs:8675
 ```
 
 If you want to restart a service (`cs`, `es`, `tsp`, or `test-runner`):
