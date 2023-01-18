@@ -15,10 +15,10 @@
       "documents": [
         {
           "target-index": "so500k",
-          "source-file": "so-documents.json.bz2",
-          "document-count": 559050,
-          "compressed-bytes": 615397588,
-          "uncompressed-bytes": 1291998069
+          "source-file": "so500k-documents.json.bz2",
+          "document-count": 500000,
+          "compressed-bytes": 92298638,
+          "uncompressed-bytes": 352122731
         }
       ]
     }
