@@ -1,91 +1,41 @@
 {
-    "mappings": {
-        "dynamic": "true",
-        "properties": {
-            "_icl_encrypted_source": {
-                "fields": {
-                    "keyword": {
-                        "ignore_above": 256,
-                        "type": "keyword"
-                    }
-                },
-                "type": "text"
-            },
-            "_icl_p_body": {
-                "analyzer": "whitespace",
-                "index_options": "docs",
-                "type": "text"
-            },
-            "_icl_p_title": {
-                "properties": {
-                    "_index_prefix": {
-                        "fields": {
-                            "keyword": {
-                                "ignore_above": 256,
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "text"
-                    },
-                    "_value": {
-                        "fields": {
-                            "keyword": {
-                                "ignore_above": 256,
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "text"
-                    }
-                }
-            },
-            "_icl_search_key_id": {
-                "fields": {
-                    "keyword": {
-                        "ignore_above": 256,
-                        "type": "keyword"
-                    }
-                },
-                "type": "text"
-            },
-            "acceptedAnswerId": {
-                "type": "keyword"
-            },
-            "answerId": {
-                "type": "keyword"
-            },
-            "creationDate": {
-                "type": "date"
-            },
-            "questionId": {
-                "type": "keyword"
-            },
-            "tags": {
-                "type": "keyword"
-            },
-            "type": {
-                "type": "keyword"
-            },
-            "user": {
-                "type": "keyword"
-            }
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "protected_fields": {
+          "match_mapping_type": "string",
+          "path_match": "_icl_p_*",
+          "mapping": {
+            "type": "text"
+          }
         }
-    },
-    "settings": {
-        "index": {
-            "number_of_replicas": "{{number_of_replicas | default(0)}}",
-            "number_of_shards": "{{number_of_shards | default(5)}}",
-            "requests": {
-                "cache": {
-                    "enable": "false"
-                }
-            },
-            "routing": {
-                "allocation": {
-                    "include": {
-                        "_tier_preference": "data_content"
-                    }
-                }
-            }
-        }
+      }
+    ],
+    "properties": {
+      "_icl_encrypted_source": {
+        "enabled": false
+      },
+      "_icl_search_key_id": {
+        "type": "keyword"
+      }
     }
+  },
+  "settings": {
+    "index": {
+      "number_of_replicas": "{{number_of_replicas | default(0)}}",
+      "number_of_shards": "{{number_of_shards | default(5)}}",
+      "requests": {
+        "cache": {
+          "enable": "false"
+        }
+      },
+      "routing": {
+        "allocation": {
+          "include": {
+            "_tier_preference": "data_content"
+          }
+        }
+      }
+    }
+  }
 }

@@ -24,7 +24,7 @@ services:
       - ./cs-config/config.json:/app/deploy.json
       - ./cs-config/indices:/app/indices
       - ./cs-config/test.key:/app/test.key
-    image: gcr.io/ironcore-images/cloaked-search:2.0.0
+    image: gcr.io/ironcore-images/cloaked-search:2
     depends_on:
       - es
       - tsp
