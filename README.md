@@ -20,11 +20,16 @@ docker compose up
 
 Note that this also binds to the local port 9200 in case you want to poke at the container. If you have a local ES instance you might want to remove the port bindings.
 
-
 Run rally against cs, repeat each time you want to run it:
 
 ```bash
 docker compose run test-runner race --track-path=/tracks/so500k --test-mode --pipeline=benchmark-only --target-hosts=cs:8675
+```
+
+You can also run rally against cs, es, create a diff and open a pull request if you run the `run-500k.sh`.
+
+```bash
+docker compose run test-runner /app/run-500k.sh
 ```
 
 If you want to restart a service (`cs`, `es`, `tsp`, or `test-runner`):
