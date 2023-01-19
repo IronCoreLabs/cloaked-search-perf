@@ -12,6 +12,10 @@ ironhide file decrypt cs-config/test.key.iron -o cs-config/test.key
 ironhide file decrypt tsp-config/tsp.env.iron -o tsp-config/tsp.env
 ```
 
+```bash
+ironhide file decrypt test-runner.env.iron -o test-runner.env
+```
+
 Start up the services:
 
 ```bash
