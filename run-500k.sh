@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 UUID=$(python3 -c 'import uuid; print(uuid.uuid1())')
 
 SECONDS_SINCE_EPOCH=$(date +%s)
