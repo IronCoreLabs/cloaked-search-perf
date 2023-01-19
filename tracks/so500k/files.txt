@@ -1,0 +1,2 @@
+so-documents.json.bz2
+so-documents-1k.json.bz2

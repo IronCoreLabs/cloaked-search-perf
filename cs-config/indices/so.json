@@ -1,0 +1,9 @@
+{
+  "fixed_tenant_id": "tenant-aws-l",
+  "mappings": {
+    "properties": {
+      "title": { "type": "text","index_prefixes": {} },
+      "body": { "type": "text" }
+    }
+  }
+}

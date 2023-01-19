@@ -1,0 +1,41 @@
+{
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "protected_fields": {
+          "match_mapping_type": "string",
+          "path_match": "_icl_p_*",
+          "mapping": {
+            "type": "text"
+          }
+        }
+      }
+    ],
+    "properties": {
+      "_icl_encrypted_source": {
+        "enabled": false
+      },
+      "_icl_search_key_id": {
+        "type": "keyword"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "number_of_replicas": "{{number_of_replicas | default(0)}}",
+      "number_of_shards": "{{number_of_shards | default(5)}}",
+      "requests": {
+        "cache": {
+          "enable": "false"
+        }
+      },
+      "routing": {
+        "allocation": {
+          "include": {
+            "_tier_preference": "data_content"
+          }
+        }
+      }
+    }
+  }
+}
