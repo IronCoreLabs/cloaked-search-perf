@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 UUID=$(python3 -c 'import uuid; print(uuid.uuid1())')
 
 SECONDS_SINCE_EPOCH=$(date +%s)
@@ -26,7 +27,7 @@ if [ ! -v PAT_EMAIL ]; then
   exit 1
 fi
 
-OUTPUT_DIR="/rally/.rally/cloaked-search-perf/results/$CURRENT_DATE-$UUID"
+OUTPUT_DIR="/rally/.rally/cloaked-search-perf/results/${CURRENT_DATE}_$UUID"
 cd /rally/.rally
 
 if [ ! -d cloaked-search-perf ]; then
