@@ -1,0 +1,55 @@
+Metric,Task,Value,Unit
+Cumulative indexing time of primary shards,,0.02751666666666667,min
+Min cumulative indexing time across primary shards,,0.00038333333333333334,min
+Median cumulative indexing time across primary shards,,0.0003916666666666667,min
+Max cumulative indexing time across primary shards,,0.025133333333333334,min
+Cumulative indexing throttle time of primary shards,,0,min
+Min cumulative indexing throttle time across primary shards,,0,min
+Median cumulative indexing throttle time across primary shards,,0.0,min
+Max cumulative indexing throttle time across primary shards,,0,min
+Cumulative merge time of primary shards,,0,min
+Cumulative merge count of primary shards,,0,
+Min cumulative merge time across primary shards,,0,min
+Median cumulative merge time across primary shards,,0.0,min
+Max cumulative merge time across primary shards,,0,min
+Cumulative merge throttle time of primary shards,,0,min
+Min cumulative merge throttle time across primary shards,,0,min
+Median cumulative merge throttle time across primary shards,,0.0,min
+Max cumulative merge throttle time across primary shards,,0,min
+Cumulative refresh time of primary shards,,0.0030833333333333333,min
+Cumulative refresh count of primary shards,,25,
+Min cumulative refresh time across primary shards,,0.00016666666666666666,min
+Median cumulative refresh time across primary shards,,0.00023333333333333333,min
+Max cumulative refresh time across primary shards,,0.0019500000000000001,min
+Cumulative flush time of primary shards,,0.004483333333333334,min
+Cumulative flush count of primary shards,,4,
+Min cumulative flush time across primary shards,,0,min
+Median cumulative flush time across primary shards,,0.0,min
+Max cumulative flush time across primary shards,,0.004483333333333334,min
+Total Young Gen GC time,,0,s
+Total Young Gen GC count,,0,
+Total Old Gen GC time,,0,s
+Total Old Gen GC count,,0,
+Store size,,0.03957970812916756,GB
+Translog size,,0.001786375418305397,GB
+Heap used for segments,,0.03556060791015625,MB
+Heap used for doc values,,0.00702667236328125,MB
+Heap used for terms,,0.020904541015625,MB
+Heap used for norms,,0.00274658203125,MB
+Heap used for points,,0,MB
+Heap used for stored fields,,0.0048828125,MB
+Segment count,,10,
+Total Ingest Pipeline count,,0,
+Total Ingest Pipeline time,,0,s
+Total Ingest Pipeline failed,,0,
+Min Throughput,bulk,13.34,docs/s
+Mean Throughput,bulk,20.02,docs/s
+Median Throughput,bulk,20.02,docs/s
+Max Throughput,bulk,26.71,docs/s
+50th percentile latency,bulk,74.91914799902588,ms
+90th percentile latency,bulk,3734.8629140178673,ms
+100th percentile latency,bulk,3745.3000390087254,ms
+50th percentile service time,bulk,74.91914799902588,ms
+90th percentile service time,bulk,3734.8629140178673,ms
+100th percentile service time,bulk,3745.3000390087254,ms
+error rate,bulk,0.00,%
