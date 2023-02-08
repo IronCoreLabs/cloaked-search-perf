@@ -1,0 +1,1 @@
+{"error":"Incorrect HTTP method for uri [/_cloaked_search/version] and method [GET], allowed: [POST]","status":405}
