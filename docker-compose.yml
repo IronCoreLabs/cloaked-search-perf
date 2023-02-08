@@ -32,7 +32,6 @@ services:
     env_file:
       - test-runner.env
     volumes:
-      - ./tracks:/tracks
       - ./rally-home:/rally/.rally
       - ./run-500k.sh:/app/run-500k.sh
     image: elastic/rally
