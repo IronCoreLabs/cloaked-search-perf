@@ -1,0 +1,51 @@
+Metric,Task,Value,Unit
+Cumulative indexing time of primary shards,,0,min
+Min cumulative indexing time across primary shards,,0,min
+Median cumulative indexing time across primary shards,,0.0,min
+Max cumulative indexing time across primary shards,,0,min
+Cumulative indexing throttle time of primary shards,,0,min
+Min cumulative indexing throttle time across primary shards,,0,min
+Median cumulative indexing throttle time across primary shards,,0.0,min
+Max cumulative indexing throttle time across primary shards,,0,min
+Cumulative merge time of primary shards,,0,min
+Cumulative merge count of primary shards,,0,
+Min cumulative merge time across primary shards,,0,min
+Median cumulative merge time across primary shards,,0.0,min
+Max cumulative merge time across primary shards,,0,min
+Cumulative merge throttle time of primary shards,,0,min
+Min cumulative merge throttle time across primary shards,,0,min
+Median cumulative merge throttle time across primary shards,,0.0,min
+Max cumulative merge throttle time across primary shards,,0,min
+Cumulative refresh time of primary shards,,0,min
+Cumulative refresh count of primary shards,,12,
+Min cumulative refresh time across primary shards,,0,min
+Median cumulative refresh time across primary shards,,0.0,min
+Max cumulative refresh time across primary shards,,0,min
+Cumulative flush time of primary shards,,0,min
+Cumulative flush count of primary shards,,0,
+Min cumulative flush time across primary shards,,0,min
+Median cumulative flush time across primary shards,,0.0,min
+Max cumulative flush time across primary shards,,0,min
+Total Young Gen GC time,,0,s
+Total Young Gen GC count,,0,
+Total Old Gen GC time,,0,s
+Total Old Gen GC count,,0,
+Store size,,0.038428470492362976,GB
+Translog size,,3.073364496231079e-07,GB
+Heap used for segments,,0.00623321533203125,MB
+Heap used for doc values,,0.00043487548828125,MB
+Heap used for terms,,0.0029296875,MB
+Heap used for norms,,0,MB
+Heap used for points,,0,MB
+Heap used for stored fields,,0.00286865234375,MB
+Segment count,,6,
+Total Ingest Pipeline count,,0,
+Total Ingest Pipeline time,,0,s
+Total Ingest Pipeline failed,,0,
+50th percentile latency,bulk,151.7159789800644,ms
+90th percentile latency,bulk,519.4562058895826,ms
+100th percentile latency,bulk,638.3607974275947,ms
+50th percentile service time,bulk,151.7159789800644,ms
+90th percentile service time,bulk,519.4562058895826,ms
+100th percentile service time,bulk,638.3607974275947,ms
+error rate,bulk,100.00,%
