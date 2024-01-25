@@ -29,8 +29,6 @@ spec:
       labels:
         app: tenant-security-proxy
       annotations:
-        prometheus.io/scrape: 'true'
-        prometheus.io/port: '7777'
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/agent-configmap: tsp-config
         vault.hashicorp.com/agent-pre-populate: "false"
