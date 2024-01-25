@@ -15,6 +15,7 @@ resources:
 - k8s/pvc.yaml
 - k8s/sa.yaml
 - k8s/tsp-sts.yaml
+- k8s/tsp-svc.yaml
 
 configMapGenerator:
 - files:
