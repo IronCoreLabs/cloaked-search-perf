@@ -1,0 +1,104 @@
+# This is the headless service used by the StatefulSet to keep track of its replicas.
+apiVersion: v1
+kind: Service
+metadata:
+  name: elastic-search-sts
+spec:
+  ports:
+    - port: 9200
+      name: http
+  clusterIP: None
+  selector:
+    app: elastic-search
+
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: elastic-search
+spec:
+  selector:
+    matchLabels:
+      app: elastic-search
+  serviceName: elastic-search-sts
+  podManagementPolicy: Parallel
+  template:
+    metadata:
+      labels:
+        app: elastic-search
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+    spec:
+      initContainers:
+        - name: config
+          image: elasticsearch-placeholder
+          command:
+          - sh
+          - -c
+          - cp -r /usr/share/elasticsearch/config/* /config && cp /config-template/* /config
+          volumeMounts:
+            - mountPath: /config-template
+              name: config-template
+            - mountPath: /config
+              name: config
+          securityContext:
+            runAsUser: 1000
+      containers:
+      - name: elastic-search
+        image: elasticsearch-placeholder
+        env:
+          - name: ES_PATH_CONF
+            value: /config
+        resources:
+          requests:
+            memory: 8Gi
+            cpu: 2
+          limits:
+            memory: 8Gi
+            cpu: 2
+        ports:
+          - containerPort: 9200
+            name: http
+          - containerPort: 9300
+        readinessProbe:
+          httpGet:
+            path: /_cluster/health?wait_for_status=yellow
+            port: http
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /_cluster/health?wait_for_status=yellow
+            port: http
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+        lifecycle:
+          preStop:
+            exec:
+              command:
+                - sleep
+                - "10"
+        volumeMounts:
+          - name: data
+            mountPath: /usr/share/elasticsearch/data
+          - name: config
+            mountPath: /config
+      securityContext:
+        fsGroup: 1000
+      volumes:
+        - name: config-template
+          configMap:
+            name: elasticsearch
+        - name: config
+          emptyDir: {}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            # The 9GB dataset expands to 65GB after indexing.
+            storage: 202Gi

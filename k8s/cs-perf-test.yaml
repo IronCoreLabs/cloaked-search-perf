@@ -1,0 +1,55 @@
+# Do the performance test.
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: cs-perf-test-
+  namespace: cs-perf-test
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-pre-populate-only: "true"
+        vault.hashicorp.com/role: cs-perf-test
+        vault.hashicorp.com/agent-run-as-user: "1000"
+        vault.hashicorp.com/agent-inject-secret-env: secret/data/cs-perf-test/cs-perf-test/env
+        vault.hashicorp.com/agent-inject-template-env: |
+          {{- with secret "secret/data/cs-perf-test/cs-perf-test/env" -}}
+            PAT="{{ .Data.data.PAT }}"
+            PAT_EMAIL="{{ .Data.data.PAT_EMAIL }}"
+            PAT_USER_NAME="{{ .Data.data.PAT_USER_NAME }}"
+          {{- end -}}
+        vault.hashicorp.com/ca-cert: /vault/tls/ca.crt
+        vault.hashicorp.com/tls-secret: vault-tls
+    spec:
+      serviceAccountName: cs-perf-test
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - name: cs-perf-test
+        image: elastic/rally:2.7.1
+        command:
+        - /app/run.sh
+        securityContext:
+          runAsUser: 1000 #This lines up with USER from the rally
+        volumeMounts:
+        - name: tracks
+          mountPath: /tracks
+        - name: rally-cache
+          mountPath: /rally/.rally
+        - name: app
+          mountPath: /app
+      restartPolicy: Never # Create a new pod if this one fails.
+      volumes:
+      - name: tracks
+        persistentVolumeClaim:
+          claimName: tracks
+      - name: rally-cache
+        persistentVolumeClaim:
+          claimName: rally-cache
+      - name: app
+        configMap:
+          name: cs-perf-app
+          defaultMode: 0755

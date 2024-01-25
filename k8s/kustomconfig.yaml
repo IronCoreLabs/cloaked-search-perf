@@ -1,0 +1,7 @@
+# Replace the name of the ConfigMap where it appears in the vault agent injector annotation.
+# https://github.com/kubernetes-sigs/kustomize/tree/master/examples/transformerconfigs
+nameReference:
+- kind: ConfigMap
+  fieldSpecs:
+  - kind: StatefulSet
+    path: spec/template/metadata/annotations/vault.hashicorp.com\/agent-configmap
