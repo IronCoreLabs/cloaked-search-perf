@@ -26,52 +26,52 @@ spec:
     spec:
       serviceAccountName: cloaked-search
       containers:
-        - name: cloaked-search
-          image: cloaked-search-placeholder
-          env:
-            - name: RUST_LOG
-              value: info
-          resources:
-            requests:
-              memory: 20Mi
-              cpu: 10m
-            limits:
-              memory: 500Mi
-              cpu: 2
-          ports:
-            - containerPort: 8675
-              name: http
-          readinessProbe:
-            httpGet:
-              path: /_cloaked_search/health
-              port: http
-          securityContext:
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
-            runAsUser: 1001
-          lifecycle:
-            preStop:
-              exec:
-                command:
-                  - sleep
-                  - "10"
-          volumeMounts:
-            - name: config
-              mountPath: /app/deploy.json
-              subPath: deploy.json
-            - name: config
-              mountPath: /app/indices
-              subPath: indices
+      - name: cloaked-search
+        image: cloaked-search-placeholder
+        env:
+        - name: RUST_LOG
+          value: info,cloaked_search_proxy=trace,cloaked_search_core=trace
+        resources:
+          requests:
+            memory: 20Mi
+            cpu: 10m
+          limits:
+            memory: 500Mi
+            cpu: 2
+        ports:
+        - containerPort: 8675
+          name: http
+        readinessProbe:
+          httpGet:
+            path: /_cloaked_search/health
+            port: http
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1001
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - sleep
+              - "10"
+        volumeMounts:
+        - name: config
+          mountPath: /app/deploy.json
+          subPath: deploy.json
+        - name: config
+          mountPath: /app/indices
+          subPath: indices
       securityContext:
         fsGroup: 1001
       volumes:
-        - name: config
-          configMap:
-            name: cloaked-search-v2
-            items:
-            - key: deploy.json
-              path: deploy.json
-            - key: so.json
-              path: indices/so.json
-            - key: so500k.json
-              path: indices/so500k.json
+      - name: config
+        configMap:
+          name: cloaked-search-v2
+          items:
+          - key: deploy.json
+            path: deploy.json
+          - key: so.json
+            path: indices/so.json
+          - key: so500k.json
+            path: indices/so500k.json
