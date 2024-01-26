@@ -1,0 +1,61 @@
+Metric,Task,Baseline,Contender,Diff,Unit,Diff %
+Cumulative indexing time of primary shards,,1.9041666666666666,2.040766666666667,+0.13660,min,+7.17%
+Min cumulative indexing time across primary shard,,0.043666666666666666,0.043666666666666666,0.00000,min,0.00%
+Median cumulative indexing time across primary shard,,0.34563333333333335,0.39264166666666667,+0.04701,min,+13.60%
+Max cumulative indexing time across primary shard,,0.4728333333333333,0.4283166666666667,-0.04452,min,-9.41%
+Cumulative indexing throttle time of primary shards,,0,0,0.00000,min,0.00%
+Min cumulative indexing throttle time across primary shard,,0,0,0.00000,min,0.00%
+Median cumulative indexing throttle time across primary shard,,0.0,0.0,0.00000,min,0.00%
+Max cumulative indexing throttle time across primary shard,,0,0,0.00000,min,0.00%
+Cumulative merge time of primary shards,,0.2798666666666667,0.011933333333333332,-0.26793,min,-95.74%
+Cumulative merge count of primary shards,,3,5,+2.00000,,+66.67%
+Min cumulative merge time across primary shard,,0,0,0.00000,min,0.00%
+Median cumulative merge time across primary shard,,0.04413333333333334,0.002191666666666667,-0.04194,min,-95.03%
+Max cumulative merge time across primary shard,,0.10113333333333333,0.0030666666666666668,-0.09807,min,-96.97%
+Cumulative merge throttle time of primary shards,,0,0,0.00000,min,0.00%
+Min cumulative merge throttle time across primary shard,,0,0,0.00000,min,0.00%
+Median cumulative merge throttle time across primary shard,,0.0,0.0,0.00000,min,0.00%
+Max cumulative merge throttle time across primary shard,,0,0,0.00000,min,0.00%
+Cumulative refresh time of primary shards,,0.25766666666666665,0.02435,-0.23332,min,-90.55%
+Cumulative refresh count of primary shards,,76,98,+22.00000,,+28.95%
+Min cumulative refresh time across primary shard,,0.0056,0.0034666666666666665,-0.00213,min,-38.10%
+Median cumulative refresh time across primary shard,,0.022424999999999997,0.0035666666666666668,-0.01886,min,-84.10%
+Max cumulative refresh time across primary shard,,0.16335,0.0056,-0.15775,min,-96.57%
+Cumulative flush time of primary shards,,0.00705,0.00705,0.00000,min,0.00%
+Cumulative flush count of primary shards,,4,4,0.00000,,0.00%
+Min cumulative flush time across primary shard,,0,0,0.00000,min,0.00%
+Median cumulative flush time across primary shard,,0.0,0.0,0.00000,min,0.00%
+Max cumulative flush time across primary shard,,0.00705,0.00705,0.00000,min,0.00%
+Total Young Gen GC time,,0.356,0.444,+0.08800,s,+24.72%
+Total Young Gen GC count,,8,6,-2.00000,,-25.00%
+Total Old Gen GC time,,0,0,0.00000,s,0.00%
+Total Old Gen GC count,,0,0,0.00000,,0.00%
+Store size,,0.31412592716515064,0.7551217116415501,+0.44100,GB,+140.39%
+Translog size,,0.3605366749688983,1.0002232333645225,+0.63969,GB,+177.43%
+Heap used for segments,,0.29332733154296875,0.16930770874023438,-0.12402,MB,-42.28%
+Heap used for doc values,,0.01364898681640625,0.016895294189453125,+0.00325,MB,+23.78%
+Heap used for terms,,0.2216796875,0.117401123046875,-0.10428,MB,-47.04%
+Heap used for norms,,0.02734375,0.01702880859375,-0.01031,MB,-37.72%
+Heap used for points,,0,0,0.00000,MB,0.00%
+Heap used for stored fields,,0.0306549072265625,0.01798248291015625,-0.01267,MB,-41.34%
+Segment count,,62,37,-25.00000,,-40.32%
+Total Ingest Pipeline count,,0,0,0.00000,,0.00%
+Total Ingest Pipeline time,,0,0,0.00000,ms,0.00%
+Total Ingest Pipeline failed,,0,0,0.00000,,0.00%
+Min Throughput,bulk,817.6235571534754,40.63425927002366,-776.98930,docs/s,-95.03%
+Mean Throughput,bulk,2648.672288343861,126.9509244962158,-2521.72136,docs/s,-95.21%
+Median Throughput,bulk,2847.6196081411276,129.87933053422196,-2717.74028,docs/s,-95.44%
+Max Throughput,bulk,3005.224391401763,218.68703823144332,-2786.53735,docs/s,-92.72%
+50th percentile latency,bulk,45.27584929019213,1017.6417864859104,+972.36594,ms,+2147.65%
+90th percentile latency,bulk,55.56975770741701,1843.882984481752,+1788.31323,ms,+3218.14%
+99th percentile latency,bulk,137.68773898482323,2976.7374861985445,+2839.04975,ms,+2061.95%
+99.9th percentile latency,bulk,270.12011967602444,3926.197192631838,+3656.07707,ms,+1353.50%
+99.99th percentile latency,bulk,482.7842386439412,4671.598513610645,+4188.81427,ms,+867.64%
+100th percentile latency,bulk,8034.2197408899665,4761.732405051589,-3272.48734,ms,-40.73%
+50th percentile service time,bulk,45.27584929019213,1017.6417864859104,+972.36594,ms,+2147.65%
+90th percentile service time,bulk,55.56975770741701,1843.882984481752,+1788.31323,ms,+3218.14%
+99th percentile service time,bulk,137.68773898482323,2976.7374861985445,+2839.04975,ms,+2061.95%
+99.9th percentile service time,bulk,270.12011967602444,3926.197192631838,+3656.07707,ms,+1353.50%
+99.99th percentile service time,bulk,482.7842386439412,4671.598513610645,+4188.81427,ms,+867.64%
+100th percentile service time,bulk,8034.2197408899665,4761.732405051589,-3272.48734,ms,-40.73%
+error rate,bulk,0.0,0.0,0.00000,%,0.00%
