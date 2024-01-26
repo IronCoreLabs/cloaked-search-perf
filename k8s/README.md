@@ -21,7 +21,7 @@ It needs some secrets in Vault.
 
 1. Consider updating the container image versions in `kustomization.yaml` and `cs-perf-test.yaml`.
 1. Make sure your kubectl context is pointing at the staging cluster.
-1. `kubectl apply -k .` in this directory to set up the namespace, PVCs, elasticsearch, and cloaked-search.
+1. `kubectl apply -k ./..` in this directory to set up the namespace, PVCs, elasticsearch, and cloaked-search.
 1. `kubectl create -f cs-perf-test.yaml` to create the test Job.
 
 # Cleanup
