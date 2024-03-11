@@ -31,7 +31,6 @@ spec:
         env:
         - name: RUST_LOG
           value: info
-          # value: info,cloaked_search_proxy=trace,cloaked_search_core=trace
         resources:
           requests:
             memory: 20Mi
@@ -63,6 +62,9 @@ spec:
         - name: config
           mountPath: /app/indices
           subPath: indices
+        - name: config
+          mountPath: /app/test.key
+          subPath: test.key
       securityContext:
         fsGroup: 1001
       volumes:
@@ -74,5 +76,7 @@ spec:
             path: deploy.json
           - key: so.json
             path: indices/so.json
+          - key: test.key
+            path: test.key
           - key: so500k.json
             path: indices/so500k.json

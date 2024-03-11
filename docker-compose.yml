@@ -1,20 +1,4 @@
 services:
-  es:
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.5.0
-    # volumes:
-    #   - ./es-data:/usr/share/elasticsearch/data
-  tsp:
-    env_file:
-      - tsp-config/tsp.env
-    image: gcr.io/ironcore-images/tenant-security-proxy:4
-    environment:
-      - RUST_LOG=warn
   cs:
     ports:
       - "8685:8675"
@@ -24,7 +8,7 @@ services:
       - ./cs-config/config.json:/app/deploy.json
       - ./cs-config/indices:/app/indices
       - ./cs-config/test.key:/app/test.key
-    image: gcr.io/ironcore-images/cloaked-search:2
+    image: gcr.io/ironcore-images/cloaked-search:2.6
     depends_on:
       - es
       - tsp
@@ -35,5 +19,3 @@ services:
       - ./rally-home:/rally/.rally
       - ./run-500k.sh:/app/run-500k.sh
     image: elastic/rally
-    depends_on:
-      - cs
