@@ -35,7 +35,7 @@ spec:
         resources:
           requests:
             memory: 20Mi
-            cpu: 10m
+            cpu: 2
           limits:
             memory: 500Mi
             cpu: 2

@@ -1,7 +1,8 @@
 cluster.name: "docker-cluster"
 network.host: 0.0.0.0
 discovery.type: single-node
-http.cors.enabled : true
+http.cors.enabled: true
 http.cors.allow-origin: "*"
 http.cors.allow-methods: GET
 http.cors.allow-headers: Content-Type,Content-Length
+xpack.security.enabled: "false"
