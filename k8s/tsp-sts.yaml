@@ -5,8 +5,8 @@ metadata:
   name: tenant-security-proxy-sts
 spec:
   ports:
-    - port: 7777
-      name: http
+  - port: 7777
+    name: http
   clusterIP: None
   selector:
     app: tenant-security-proxy
@@ -28,12 +28,6 @@ spec:
     metadata:
       labels:
         app: tenant-security-proxy
-      annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/agent-configmap: tsp-config
-        vault.hashicorp.com/agent-pre-populate: "false"
-        vault.hashicorp.com/ca-cert: /vault/tls/ca.crt
-        vault.hashicorp.com/tls-secret: vault-tls
     spec:
       securityContext:
         runAsUser: 2 # Any non-root user will do.
@@ -44,12 +38,6 @@ spec:
       containers:
       - name: tenant-security-proxy
         image: tsp-placeholder
-        command:
-        - /app/godotenv
-        - -o
-        - -f
-        - /vault/secrets/env
-        - /app/tenant-security-proxy
         resources:
           requests:
             cpu: 100m
@@ -61,6 +49,36 @@ spec:
           value: stage
         - name: CB_OVERRIDE
           value: stage
+        - name: SERVICE_ACCOUNT_ID
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-account-id
+        - name: SERVICE_CONFIG_ID
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-config-id
+        - name: SERVICE_SEGMENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-segment-id
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: api-key
+        - name: SERVICE_ENCRYPTION_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-encryption-private-key
+        - name: SERVICE_SIGNING_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-signing-private-key
         ports:
         - containerPort: 9000
           name: health
@@ -76,16 +94,10 @@ spec:
           preStop:
             exec:
               command:
-                - sleep
-                - "10"
+              - sleep
+              - "10"
       - name: logdriver
         image: ld-placeholder
-        command:
-        - /app/godotenv
-        - -o
-        - -f
-        - /vault/secrets/env
-        - /app/tenant-security-logdriver
         resources:
           requests:
             cpu: 75m
@@ -97,6 +109,36 @@ spec:
           value: info
         - name: IRONCORE_ENV
           value: stage
+        - name: SERVICE_ACCOUNT_ID
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-account-id
+        - name: SERVICE_CONFIG_ID
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-config-id
+        - name: SERVICE_SEGMENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-segment-id
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: api-key
+        - name: SERVICE_ENCRYPTION_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-encryption-private-key
+        - name: SERVICE_SIGNING_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-signing-private-key
         ports:
         - containerPort: 9001
           name: health
@@ -110,17 +152,17 @@ spec:
           preStop:
             exec:
               command:
-                - sleep
-                - "10"
+              - sleep
+              - "10"
         volumeMounts:
         - mountPath: /logdriver
           name: logdriver
   volumeClaimTemplates:
-    - metadata:
-        name: logdriver
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
+  - metadata:
+      name: logdriver
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
