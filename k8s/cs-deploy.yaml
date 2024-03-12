@@ -30,7 +30,7 @@ spec:
         image: cloaked-search-placeholder
         env:
         - name: RUST_LOG
-          value: info
+          value: warn
           # value: info,cloaked_search_proxy=trace,cloaked_search_core=trace
         resources:
           requests:

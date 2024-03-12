@@ -40,13 +40,15 @@ spec:
         image: tsp-placeholder
         resources:
           requests:
-            cpu: 100m
+            cpu: 2
             memory: 128Mi
         env:
         - name: RUST_LOG
           value: info
         - name: IRONCORE_ENV
           value: stage
+        - name: TSP_ENABLE_LOGDRIVER_INTEGRATION
+          value: "false"
         - name: CB_OVERRIDE
           value: stage
         - name: SERVICE_ACCOUNT_ID
@@ -96,73 +98,3 @@ spec:
               command:
               - sleep
               - "10"
-      - name: logdriver
-        image: ld-placeholder
-        resources:
-          requests:
-            cpu: 75m
-            memory: 64Mi
-        env:
-        - name: CB_OVERRIDE
-          value: stage
-        - name: RUST_LOG
-          value: info
-        - name: IRONCORE_ENV
-          value: stage
-        - name: SERVICE_ACCOUNT_ID
-          valueFrom:
-            secretKeyRef:
-              name: tenant-security-proxy-ironcore-context
-              key: service-account-id
-        - name: SERVICE_CONFIG_ID
-          valueFrom:
-            secretKeyRef:
-              name: tenant-security-proxy-ironcore-context
-              key: service-config-id
-        - name: SERVICE_SEGMENT_ID
-          valueFrom:
-            secretKeyRef:
-              name: tenant-security-proxy-ironcore-context
-              key: service-segment-id
-        - name: API_KEY
-          valueFrom:
-            secretKeyRef:
-              name: tenant-security-proxy-ironcore-context
-              key: api-key
-        - name: SERVICE_ENCRYPTION_PRIVATE_KEY
-          valueFrom:
-            secretKeyRef:
-              name: tenant-security-proxy-ironcore-context
-              key: service-encryption-private-key
-        - name: SERVICE_SIGNING_PRIVATE_KEY
-          valueFrom:
-            secretKeyRef:
-              name: tenant-security-proxy-ironcore-context
-              key: service-signing-private-key
-        ports:
-        - containerPort: 9001
-          name: health
-        readinessProbe:
-          httpGet:
-            path: /ready
-            port: health
-        securityContext:
-          allowPrivilegeEscalation: false
-        lifecycle:
-          preStop:
-            exec:
-              command:
-              - sleep
-              - "10"
-        volumeMounts:
-        - mountPath: /logdriver
-          name: logdriver
-  volumeClaimTemplates:
-  - metadata:
-      name: logdriver
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: 1Gi

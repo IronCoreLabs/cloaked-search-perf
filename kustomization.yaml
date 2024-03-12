@@ -43,9 +43,6 @@ images:
 - name: elasticsearch-placeholder
   newName: elasticsearch
   newTag: 8.5.0
-- name: ld-placeholder
-  newName: gcr.io/ironcore-images/tenant-security-logdriver
-  newTag: 4.3.1
 - name: tsp-placeholder
   newName: gcr.io/ironcore-images/tenant-security-proxy
   newTag: 4.12.1

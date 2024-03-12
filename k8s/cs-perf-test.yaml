@@ -30,6 +30,10 @@ spec:
       containers:
       - name: cs-perf-test
         image: elastic/rally:2.7.1
+        resources:
+          requests:
+            memory: 300Mi
+            cpu: 2
         command:
         - /app/run.sh
         securityContext:
