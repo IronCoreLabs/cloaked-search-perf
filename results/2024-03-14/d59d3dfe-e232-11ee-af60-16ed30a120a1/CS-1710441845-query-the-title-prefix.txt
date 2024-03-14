@@ -1,0 +1,856 @@
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking elasticsearch.cs-perf-test.svc.cluster.local (be patient)...INFO: POST header == 
+---
+POST /so500k/_search HTTP/1.0
+Content-length: 90
+Content-type: application/json
+Host: elasticsearch.cs-perf-test.svc.cluster.local:9200
+User-Agent: ApacheBench/2.3
+Accept: */*
+
+
+---
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 161
+
+{"took":19,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 161
+
+{"took":18,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 161
+
+{"took":19,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 161
+
+{"took":17,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 161
+
+{"took":20,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 161
+
+{"took":21,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+LOG: header received:
+HTTP/1.0 200 OK
+X-elastic-product: Elasticsearch
+content-type: application/json
+content-length: 160
+
+{"took":0,"timed_out":false,"_shards":{"total":5,"successful":5,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}
+LOG: Response code = 200
+..done
+
+
+Server Software:        
+Server Hostname:        elasticsearch.cs-perf-test.svc.cluster.local
+Server Port:            9200
+
+Document Path:          /so500k/_search
+Document Length:        Variable
+
+Concurrency Level:      10
+Time taken for tests:   0.090 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      26606 bytes
+Total body sent:        27400
+HTML transferred:       16006 bytes
+Requests per second:    1113.83 [#/sec] (mean)
+Time per request:       8.978 [ms] (mean)
+Time per request:       0.898 [ms] (mean, across all concurrent requests)
+Transfer rate:          289.40 [Kbytes/sec] received
+                        298.04 kb/s sent
+                        587.44 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     2    8   6.5      6      30
+Waiting:        2    8   6.5      6      30
+Total:          2    8   6.5      6      31
+
+Percentage of the requests served within a certain time (ms)
+  50%      6
+  66%      7
+  75%      8
+  80%      9
+  90%     20
+  95%     27
+  98%     30
+  99%     31
+ 100%     31 (longest request)
