@@ -23,6 +23,8 @@ configMapGenerator:
 - files:
   - k8s/config/perf-test/run.sh
   - run-500k.sh
+  - queries/the-title
+  - queries/the-title-prefix
   name: cs-perf-app
   options:
     disableNameSuffixHash: true

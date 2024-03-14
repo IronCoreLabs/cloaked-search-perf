@@ -29,7 +29,7 @@ spec:
         fsGroup: 1000
       containers:
       - name: cs-perf-test
-        image: elastic/rally:2.7.1
+        image: gcr.io/ironcore-dev-1/rally:2.7.1
         resources:
           requests:
             memory: 300Mi
@@ -57,3 +57,12 @@ spec:
         configMap:
           name: cs-perf-app
           defaultMode: 0755
+          items:
+          - key: run.sh
+            path: run.sh
+          - key: run-500k.sh
+            path: run-500k.sh
+          - key: the-title
+            path: queries/the-title
+          - key: the-title-prefix
+            path: queries/the-title-prefix

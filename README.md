@@ -1,5 +1,17 @@
 # Perf Testing
 
+## Building docker container
+
+The Dockerfile in this repo is a thin wrapper around the esrally one that just adds Apache Bench to the container. In order to build it I did the following:
+
+```bash
+docker build . -t IronCoreLabs/rally:2.7.1
+docker tag docker.io/ironcorelabs/rally:2.7.1  gcr.io/ironcore-dev-1/rally:2.7.1
+docker push gcr.io/ironcore-dev-1/rally:2.7.1
+```
+
+The version of the container should change if the Dockerfile has a different version of the rally tool inside of it.
+
 ## Local setup
 
 First, decrypt the keys.

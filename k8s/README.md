@@ -2,7 +2,7 @@
 
 Uses the elasticsearch rally container to do a stress test of Cloaked Search.
 
-# Prerequisites
+## Prerequisites
 
 It needs some secrets in Vault.
 
@@ -17,14 +17,17 @@ It needs some secrets in Vault.
 1. `vault kv put /secret/cs-perf-test/cloaked-search/perf-test-key perf-test.key=@cs-perf-test.key`
 1. `vault kv put /secret/cs-perf-test/tsp/ironcore-context service-account-id=$SERVICE_ACCOUNT_ID service-config-id=$SERVICE_CONFIG_ID service-segment-id=$SERVICE_SEGMENT_ID api-key=$API_KEY service-encryption-private-key=$SERVICE_ENCRYPTION_PRIVATE_KEY service-signing-private-key=$SERVICE_SIGNING_PRIVATE_KEY`
 
-# Running
+## Running
 
 1. Consider updating the container image versions in `kustomization.yaml` and `cs-perf-test.yaml`.
 1. Make sure your kubectl context is pointing at the staging cluster.
 1. `kubectl apply -k ./..` in this directory to set up the namespace, PVCs, elasticsearch, and cloaked-search.
 1. `kubectl create -f cs-perf-test.yaml` to create the test Job.
 
-# Cleanup
+## Updating so _source and _encrypted_source are false
+
+You need to change the track mapping [here](../tracks/so500k/track.json) to have `"_source": { "enabled": false }` in the mapping and change the cloaked search config file [here](./config/cloaked-search/indices/so500k.json) to have `"_encrypted_source": { "enabled": false }` in the mapping.
+## Cleanup
 
 The elasticsearch instance used by these tests is allocated quite a bit of memory and CPU. Best not to leave it running if there's
 no need.
