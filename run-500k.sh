@@ -9,8 +9,8 @@ INDEX="so500k"
 TRACK_PATH="tracks/$INDEX"
 CURRENT_DATE=$(date +%F)
 BRANCH_NAME="$CURRENT_DATE-$UUID"
-QUERY_CONCURRENCY=10
-QUERY_TOTAL_PER_QUERY=1000
+QUERY_CONCURRENCY=5
+QUERY_TOTAL_PER_QUERY=500
 
 [[ -z "${CS_HOST}" ]] && CS_HOST='cs:8675' && echo "Defaulting CS host"
 [[ -z "${ES_HOST}" ]] && ES_HOST='es:9200' && echo "Defaulting ES host"
@@ -113,7 +113,7 @@ esrally race "--track-path=$TRACK_PATH" --pipeline=benchmark-only "--target-host
 query_all "$ES_HOST" "/app/queries" "$ES_IDENT"
 
 esrally race "--track-path=$TRACK_PATH" --pipeline=benchmark-only "--target-hosts=$CS_HOST" --user-tags=cluster:cs "--race-id=$CS_IDENT" --report-format=csv --report-file="${OUTPUT_DIR}/${CS_IDENT}.csv"
-query_all "$ES_HOST" "/app/queries" "$CS_IDENT"
+query_all "$CS_HOST" "/app/queries" "$CS_IDENT"
 
 # Run the compare utility
 esrally compare "--baseline=$ES_IDENT" "--contender=$CS_IDENT" --report-format=csv "--report-file=$OUTPUT_DIR/compare-$SECONDS_SINCE_EPOCH.csv"
