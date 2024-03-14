@@ -1,0 +1,45 @@
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking elasticsearch.cs-perf-test.svc.cluster.local (be patient)
+
+
+Server Software:        
+Server Hostname:        elasticsearch.cs-perf-test.svc.cluster.local
+Server Port:            9200
+
+Document Path:          /so500k/_search
+Document Length:        Variable
+
+Concurrency Level:      5
+Time taken for tests:   2.233 seconds
+Complete requests:      500
+Failed requests:        0
+Total transferred:      4740151 bytes
+Total body sent:        137000
+HTML transferred:       4686651 bytes
+Requests per second:    223.89 [#/sec] (mean)
+Time per request:       22.333 [ms] (mean)
+Time per request:       4.467 [ms] (mean, across all concurrent requests)
+Transfer rate:          2072.76 [Kbytes/sec] received
+                        59.91 kb/s sent
+                        2132.66 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       1
+Processing:     5   21  20.4     11      72
+Waiting:        5   21  20.4     11      72
+Total:          5   22  20.4     11      72
+
+Percentage of the requests served within a certain time (ms)
+  50%     11
+  66%     13
+  75%     18
+  80%     55
+  90%     60
+  95%     63
+  98%     66
+  99%     70
+ 100%     72 (longest request)
