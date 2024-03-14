@@ -24,9 +24,10 @@ It needs some secrets in Vault.
 1. `kubectl apply -k ./..` in this directory to set up the namespace, PVCs, elasticsearch, and cloaked-search.
 1. `kubectl create -f cs-perf-test.yaml` to create the test Job.
 
-## Updating so _source and _encrypted_source are false
+## Updating so _encrypted_source is false
 
-You need to change the track mapping [here](../tracks/so500k/track.json) to have `"_source": { "enabled": false }` in the mapping and change the cloaked search config file [here](./config/cloaked-search/indices/so500k.json) to have `"_encrypted_source": { "enabled": false }` in the mapping.
+You need to change the cloaked search config file [here](./config/cloaked-search/indices/so500k.json) to have `"_encrypted_source": { "enabled": false }` in the mapping. The changes to the track can't be made locally. If we want to be able to disable `_source` in ES, we'd need to make a new track I think.
+
 ## Cleanup
 
 The elasticsearch instance used by these tests is allocated quite a bit of memory and CPU. Best not to leave it running if there's
