@@ -1,3 +1,42 @@
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: cloaked-search-proxy
+spec:
+  method: kubernetes
+  mount: kubernetes
+  kubernetes:
+    role: cs-perf-test-cs
+    serviceAccount: cs-perf-test-cs
+
+---
+
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultStaticSecret
+metadata:
+  name: cloaked-search-proxy-perf-test-key
+spec:
+  vaultAuthRef: cloaked-search-proxy
+  mount: secret
+  type: kv-v2
+  path: cs-perf-test/cloaked-search/perf-test-key
+  destination:
+    create: true
+    overwrite: true
+    name: cloaked-search-proxy-perf-test-key
+    transformation:
+      excludes:
+      - .*
+      templates:
+        "perf-test.key":
+          text: |
+            {{- get .Secrets "perf-test.key" -}}
+  rolloutRestartTargets:
+  - kind: StatefulSet
+    name: cloaked-search-proxy
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -10,19 +49,6 @@ spec:
     metadata:
       labels:
         app: cloaked-search-v2
-      annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/role: cs-perf-test-cs
-        vault.hashicorp.com/agent-run-as-same-user: "true"
-        vault.hashicorp.com/agent-share-process-namespace: "true"
-        vault.hashicorp.com/agent-inject-command: "pkill cloaked-search-proxy"
-        vault.hashicorp.com/agent-inject-secret-perf-test.key: secret/data/cs-perf-test/cloaked-search/perf-test-key
-        vault.hashicorp.com/agent-inject-template-perf-test.key: |
-          {{- with secret "secret/data/cs-perf-test/cloaked-search/perf-test-key" -}}
-            {{ index .Data.data "perf-test.key" }}
-          {{- end -}}
-        vault.hashicorp.com/ca-cert: /vault/tls/ca.crt
-        vault.hashicorp.com/tls-secret: vault-tls
     spec:
       serviceAccountName: cloaked-search
       containers:
@@ -63,6 +89,9 @@ spec:
         - name: config
           mountPath: /app/indices
           subPath: indices
+        - name: cloaked-search-proxy-perf-test-key-volume
+          secret:
+            secretName: cloaked-search-proxy-perf-test-key
       securityContext:
         fsGroup: 1001
       volumes:
