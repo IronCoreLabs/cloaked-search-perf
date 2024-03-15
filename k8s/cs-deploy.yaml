@@ -32,8 +32,8 @@ spec:
           text: |
             {{- get .Secrets "perf-test.key" -}}
   rolloutRestartTargets:
-  - kind: StatefulSet
-    name: cloaked-search-proxy
+  - kind: Deployment
+    name: cloaked-search-v2
 
 ---
 
@@ -89,9 +89,6 @@ spec:
         - name: config
           mountPath: /app/indices
           subPath: indices
-        - name: cloaked-search-proxy-perf-test-key-volume
-          secret:
-            secretName: cloaked-search-proxy-perf-test-key
       securityContext:
         fsGroup: 1001
       volumes:
@@ -105,3 +102,6 @@ spec:
             path: indices/so.json
           - key: so500k.json
             path: indices/so500k.json
+      - name: cloaked-search-proxy-perf-test-key-volume
+        secret:
+          secretName: cloaked-search-proxy-perf-test-key
