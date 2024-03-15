@@ -1,0 +1,7 @@
+{
+  "search_service_url": "http://elasticsearch:9200",
+  "tsp_config": {
+    "url": "http://tenant-security-proxy.cs-perf-test.svc.cluster.local:7777",
+    "api_keypath": "/vault/secrets/perf-test.key"
+  }
+}

@@ -1,0 +1,133 @@
+# The secrets needed by the TSP service.
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: tenant-security-proxy
+spec:
+  method: kubernetes
+  mount: kubernetes
+  kubernetes:
+    role: cs-perf-test-tsp
+    serviceAccount: tenant-security-proxy
+
+---
+
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultStaticSecret
+metadata:
+  name: tenant-security-proxy-env
+spec:
+  vaultAuthRef: tenant-security-proxy
+  mount: secret
+  type: kv-v2
+  path: cs-perf-test/tsp/ironcore-context
+  destination:
+    create: true
+    overwrite: true
+    name: tenant-security-proxy-ironcore-context
+  rolloutRestartTargets:
+  - kind: StatefulSet
+    name: tenant-security-proxy
+
+---
+
+# This is the headless service used by the StatefulSet to keep track of its replicas.
+apiVersion: v1
+kind: Service
+metadata:
+  name: tenant-security-proxy-sts
+spec:
+  ports:
+  - port: 7777
+    name: http
+  clusterIP: None
+  selector:
+    app: tenant-security-proxy
+
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: tenant-security-proxy
+spec:
+  # We're not setting replicas here because that's controlled by a HorizontalPodAutoscaler.
+  selector:
+    matchLabels:
+      app: tenant-security-proxy
+  serviceName: tenant-security-proxy-sts
+  podManagementPolicy: Parallel
+  template:
+    metadata:
+      labels:
+        app: tenant-security-proxy
+    spec:
+      securityContext:
+        runAsUser: 2 # Any non-root user will do.
+        runAsGroup: 2
+        fsGroup: 2
+        runAsNonRoot: true
+      serviceAccountName: tenant-security-proxy
+      containers:
+      - name: tenant-security-proxy
+        image: tsp-placeholder
+        resources:
+          requests:
+            cpu: 2
+            memory: 128Mi
+        env:
+        - name: RUST_LOG
+          value: info
+        - name: IRONCORE_ENV
+          value: stage
+        - name: TSP_ENABLE_LOGDRIVER_INTEGRATION
+          value: "false"
+        - name: CB_OVERRIDE
+          value: stage
+        - name: SERVICE_ACCOUNT_ID
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-account-id
+        - name: SERVICE_CONFIG_ID
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-config-id
+        - name: SERVICE_SEGMENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-segment-id
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: api-key
+        - name: SERVICE_ENCRYPTION_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-encryption-private-key
+        - name: SERVICE_SIGNING_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: tenant-security-proxy-ironcore-context
+              key: service-signing-private-key
+        ports:
+        - containerPort: 9000
+          name: health
+        - containerPort: 7777
+          name: http
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: health
+        securityContext:
+          allowPrivilegeEscalation: false
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - sleep
+              - "10"

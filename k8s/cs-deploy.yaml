@@ -1,0 +1,112 @@
+# The secrets for cloaked search.
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: cloaked-search-proxy
+spec:
+  method: kubernetes
+  mount: kubernetes
+  kubernetes:
+    role: cs-perf-test-cs
+    serviceAccount: cloaked-search
+
+---
+
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultStaticSecret
+metadata:
+  name: cloaked-search-proxy-perf-test-key
+spec:
+  vaultAuthRef: cloaked-search-proxy
+  mount: secret
+  type: kv-v2
+  path: cs-perf-test/cloaked-search/perf-test-key
+  destination:
+    create: true
+    overwrite: true
+    name: cloaked-search-proxy-perf-test-key
+    transformation:
+      excludes:
+      - .*
+      templates:
+        "perf-test.key":
+          text: |
+            {{- get .Secrets "perf-test.key" -}}
+  rolloutRestartTargets:
+  - kind: Deployment
+    name: cloaked-search-v2
+
+---
+
+# The deployment for cloaked search.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloaked-search-v2
+spec:
+  selector:
+    matchLabels:
+      app: cloaked-search-v2
+  template:
+    metadata:
+      labels:
+        app: cloaked-search-v2
+    spec:
+      serviceAccountName: cloaked-search
+      containers:
+      - name: cloaked-search
+        image: cloaked-search-placeholder
+        env:
+        - name: RUST_LOG
+          value: warn
+          # value: info,cloaked_search_proxy=trace,cloaked_search_core=trace
+        resources:
+          requests:
+            memory: 20Mi
+            cpu: 2
+          limits:
+            memory: 500Mi
+            cpu: 2
+        ports:
+        - containerPort: 8675
+          name: http
+        readinessProbe:
+          httpGet:
+            path: /_cloaked_search/health
+            port: http
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          runAsUser: 1001
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - sleep
+              - "10"
+        volumeMounts:
+        - name: config
+          mountPath: /app/deploy.json
+          subPath: deploy.json
+        - name: config
+          mountPath: /app/indices
+          subPath: indices
+        - name: cloaked-search-proxy-perf-test-key-volume
+          mountPath: /vault/secrets
+          readOnly: true
+      securityContext:
+        fsGroup: 1001
+      volumes:
+      - name: config
+        configMap:
+          name: cloaked-search-v2
+          items:
+          - key: deploy.json
+            path: deploy.json
+          - key: so.json
+            path: indices/so.json
+          - key: so500k.json
+            path: indices/so500k.json
+      - name: cloaked-search-proxy-perf-test-key-volume
+        secret:
+          secretName: cloaked-search-proxy-perf-test-key
