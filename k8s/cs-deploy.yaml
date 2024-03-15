@@ -7,7 +7,7 @@ spec:
   mount: kubernetes
   kubernetes:
     role: cs-perf-test-cs
-    serviceAccount: cs-perf-test-cs
+    serviceAccount: cloaked-search
 
 ---
 
@@ -89,6 +89,9 @@ spec:
         - name: config
           mountPath: /app/indices
           subPath: indices
+        - name: cloaked-search-proxy-perf-test-key-volume
+          mountPath: /vault/secrets
+          readOnly: true
       securityContext:
         fsGroup: 1001
       volumes:
