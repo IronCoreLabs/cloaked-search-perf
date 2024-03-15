@@ -1,3 +1,4 @@
+# The secrets for cloaked search.
 apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultAuth
 metadata:
@@ -37,6 +38,7 @@ spec:
 
 ---
 
+# The deployment for cloaked search.
 apiVersion: apps/v1
 kind: Deployment
 metadata:

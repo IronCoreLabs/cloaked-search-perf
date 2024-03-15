@@ -1,4 +1,33 @@
-# Do the performance test.
+# The secrets needed by the cs-perf-test job
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: cs-perf-test
+spec:
+  method: kubernetes
+  mount: kubernetes
+  kubernetes:
+    role: cs-perf-test-tsp
+    serviceAccount: cs-perf-test
+
+---
+
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultStaticSecret
+metadata:
+  name: cs-perf-test-env
+spec:
+  vaultAuthRef: cs-perf-test
+  mount: secret
+  type: kv-v2
+  path: cs-perf-test/cs-perf-test/env
+  destination:
+    create: true
+    overwrite: true
+    name: cs-perf-test-env
+---
+
+# The performance testing job.
 
 apiVersion: batch/v1
 kind: Job
@@ -8,21 +37,6 @@ metadata:
 spec:
   backoffLimit: 1
   template:
-    metadata:
-      annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/agent-pre-populate-only: "true"
-        vault.hashicorp.com/role: cs-perf-test
-        vault.hashicorp.com/agent-run-as-user: "1000"
-        vault.hashicorp.com/agent-inject-secret-env: secret/data/cs-perf-test/cs-perf-test/env
-        vault.hashicorp.com/agent-inject-template-env: |
-          {{- with secret "secret/data/cs-perf-test/cs-perf-test/env" -}}
-            PAT="{{ .Data.data.PAT }}"
-            PAT_EMAIL="{{ .Data.data.PAT_EMAIL }}"
-            PAT_USER_NAME="{{ .Data.data.PAT_USER_NAME }}"
-          {{- end -}}
-        vault.hashicorp.com/ca-cert: /vault/tls/ca.crt
-        vault.hashicorp.com/tls-secret: vault-tls
     spec:
       serviceAccountName: cs-perf-test
       securityContext:
@@ -38,6 +52,22 @@ spec:
         - /app/run.sh
         securityContext:
           runAsUser: 1000 #This lines up with USER from the rally
+        env:
+        - name: PAT
+          valueFrom:
+            secretKeyRef:
+              name: cs-perf-test-env
+              key: PAT
+        - name: PAT_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: cs-perf-test-env
+              key: PAT_EMAIL
+        - name: PAT_USER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: cs-perf-test-env
+              key: PAT_USER_NAME
         volumeMounts:
         - name: tracks
           mountPath: /tracks
