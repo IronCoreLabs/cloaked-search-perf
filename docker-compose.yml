@@ -34,6 +34,11 @@ services:
     volumes:
       - ./rally-home:/rally/.rally
       - ./run-500k.sh:/app/run-500k.sh
-    image: elastic/rally
+      - ./tracks:/tracks
+      - ./queries:/app/queries
+
+    image: docker.io/ironcorelabs/rally:2.7.1
+    entrypoint: /app/run-500k.sh
     depends_on:
       - cs
+      - es

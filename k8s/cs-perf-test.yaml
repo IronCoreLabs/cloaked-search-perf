@@ -7,7 +7,7 @@ spec:
   method: kubernetes
   mount: kubernetes
   kubernetes:
-    role: cs-perf-test-tsp
+    role: cs-perf-test
     serviceAccount: cs-perf-test
 
 ---
@@ -28,7 +28,6 @@ spec:
 ---
 
 # The performance testing job.
-
 apiVersion: batch/v1
 kind: Job
 metadata:
