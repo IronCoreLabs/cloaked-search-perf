@@ -30,7 +30,8 @@ services:
       - tsp
   test-runner:
     env_file:
-      - test-runner.env
+      - path: test-runner.env
+        required: false
     volumes:
       - ./rally-home:/rally/.rally
       - ./run-500k.sh:/app/run-500k.sh
