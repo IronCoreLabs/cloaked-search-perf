@@ -1,34 +1,4 @@
-# The secrets needed by the cs-perf-test job
-apiVersion: secrets.hashicorp.com/v1beta1
-kind: VaultAuth
-metadata:
-  name: cs-perf-test
-spec:
-  method: kubernetes
-  mount: kubernetes
-  kubernetes:
-    role: cs-perf-test-tsp
-    serviceAccount: cs-perf-test
-
----
-
-apiVersion: secrets.hashicorp.com/v1beta1
-kind: VaultStaticSecret
-metadata:
-  name: cs-perf-test-env
-spec:
-  vaultAuthRef: cs-perf-test
-  mount: secret
-  type: kv-v2
-  path: cs-perf-test/cs-perf-test/env
-  destination:
-    create: true
-    overwrite: true
-    name: cs-perf-test-env
----
-
 # The performance testing job.
-
 apiVersion: batch/v1
 kind: Job
 metadata:
