@@ -1,4 +1,8 @@
-# Perf Testing
+# Cloaked Search Performance Testing
+
+This repository is a way to do some basic performance testing of Cloaked Search. This tests the indexing using [rally](https://esrally.readthedocs.io/en/stable/) and query tests using apache bench. We have some [results](./results/) committed and ways to run them locally and in our k8s cluster.
+
+Note that results will vary wildly depending on your os, cpu, memory, etc. We're only really looking for if the results are wildly different when running them in k8s since we more tightly control the resources there.
 
 ## Building docker container
 
