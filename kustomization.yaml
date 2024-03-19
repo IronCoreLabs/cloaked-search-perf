@@ -13,6 +13,7 @@ resources:
 - k8s/sa.yaml
 - k8s/tsp-sts.yaml
 - k8s/tsp-svc.yaml
+- k8s/secrets.yaml
 
 configMapGenerator:
 - files:

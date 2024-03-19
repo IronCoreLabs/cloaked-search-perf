@@ -12,7 +12,4 @@ while ! curl -kSsf "http://tenant-security-proxy.tsp.svc.cluster.local:9000/heal
 done
 
 # shellcheck source=/dev/null
-source /vault/secrets/env
-
-# shellcheck source=/dev/null
 source "${SCRIPT_DIR}/run-500k.sh"

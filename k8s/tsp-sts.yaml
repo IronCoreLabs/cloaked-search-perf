@@ -1,36 +1,3 @@
-# The secrets needed by the TSP service.
-apiVersion: secrets.hashicorp.com/v1beta1
-kind: VaultAuth
-metadata:
-  name: tenant-security-proxy
-spec:
-  method: kubernetes
-  mount: kubernetes
-  kubernetes:
-    role: cs-perf-test-tsp
-    serviceAccount: tenant-security-proxy
-
----
-
-apiVersion: secrets.hashicorp.com/v1beta1
-kind: VaultStaticSecret
-metadata:
-  name: tenant-security-proxy-env
-spec:
-  vaultAuthRef: tenant-security-proxy
-  mount: secret
-  type: kv-v2
-  path: cs-perf-test/tsp/ironcore-context
-  destination:
-    create: true
-    overwrite: true
-    name: tenant-security-proxy-ironcore-context
-  rolloutRestartTargets:
-  - kind: StatefulSet
-    name: tenant-security-proxy
-
----
-
 # This is the headless service used by the StatefulSet to keep track of its replicas.
 apiVersion: v1
 kind: Service
