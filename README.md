@@ -19,21 +19,7 @@ docker push gcr.io/ironcore-dev-1/rally:2.7.1
 
 ## Local testing
 
-First, decrypt the keys.
-
-```bash
-ironhide file decrypt cs-config/test.key.iron -o cs-config/test.key
-```
-
-```bash
-ironhide file decrypt tsp-config/tsp.env.iron -o tsp-config/tsp.env
-```
-
-```bash
-ironhide file decrypt test-runner.env.iron -o test-runner.env
-```
-
-Start up the services:
+Start up the services and run the test:
 
 ```bash
 docker compose up
