@@ -20,6 +20,6 @@ Each UUID directory contains quite a few files. These fall into a few different 
 ## Query output
 
 - `ES-TIMESTAMP-query-QUERY_NAME.csv` - The percentile output from Apache Bench. This gives the most detail about the query timing for the running `QUERY_NAME` against Elastic Search.
-- `CS-TIMESTAMP-query-QUERY_NAME.csv` - The percentile output from Apache Bench. This gives the most detail about the query timing for the running `QUERY_NAME` against Elastic Search.
+- `CS-TIMESTAMP-query-QUERY_NAME.csv` - The percentile output from Apache Bench. This gives the most detail about the query timing for the running `QUERY_NAME` against Cloaked Search.
 - `ES-TIMESTAMP-query-QUERY_NAME.txt` - The complete output from Apache Bench. This gives the summary information about querying `QUERY_NAME` against Elastic Search.
 - `CS-TIMESTAMP-query-QUERY_NAME.txt` - The complete output from Apache Bench. This gives the summary information about querying `QUERY_NAME` against Cloaked Search.
