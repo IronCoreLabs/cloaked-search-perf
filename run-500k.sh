@@ -14,6 +14,7 @@ QUERY_TOTAL_PER_QUERY=500
 GIT_URL=https://github.com/IronCoreLabs/cloaked-search-perf.git
 EMAIL="default@example.com"
 USERNAME=default
+QUERY_DIR="/app/queries"
 
 [[ -z "${CS_HOST}" ]] && CS_HOST='cs:8675' && echo "Defaulting CS host"
 [[ -z "${ES_HOST}" ]] && ES_HOST='es:9200' && echo "Defaulting ES host"
@@ -112,19 +113,44 @@ query()
   ab -l -e "$OUTPUT_DIR/$3-query-$JUST_FILENAME.csv" -p "$2" -T application/json -c "$QUERY_CONCURRENCY" -n "$QUERY_TOTAL_PER_QUERY" "$QUERY_URL" | tee "$OUTPUT_DIR/$3-query-$JUST_FILENAME.txt"
 }
 
+create_summaries()
+{
+  README_FILE="$OUTPUT_DIR/README.md"
+  # This comes out as something like `-13.20\r`, so we need to strip 1st and last character
+  PERCENT_SLOWER=$(grep '^Median Throughput,' "$OUTPUT_DIR/compare-$SECONDS_SINCE_EPOCH.csv" | cut -d',' -f7 | sed -E 's/^-*([0-9]+([.][0-9]+)?%).*$/\1/')
+  { echo "# Summary";
+  echo ""
+  echo "See the [README](../README.md) in the results directory for more information on what each of these files means."
+  echo ""
+  echo "Cloaked Search was $PERCENT_SLOWER slower than Elastic Search at bulk index."
+  echo ""
+  echo "The median query times:"
+  echo ""
+  echo "| Elastic Search | Cloaked Search | Query Name"
+  echo "|----------------|----------------|-----------";
+  } >> "$README_FILE"
+  for filename in "$QUERY_DIR"/*; do
+    JUST_FILENAME=$(basename "$filename")
+    ES_MS_TIME=$(grep '^50,' "$OUTPUT_DIR/$ES_IDENT-query-$JUST_FILENAME.csv" | cut -d',' -f2)
+    CS_MS_TIME=$(grep '^50,' "$OUTPUT_DIR/$CS_IDENT-query-$JUST_FILENAME.csv" | cut -d',' -f2)
+    echo "| $ES_MS_TIME | $CS_MS_TIME | $JUST_FILENAME " >> "$README_FILE"
+  done
+}
+
 # Run test-mode to ensure that the tsp is warmed up
 esrally race "--track-path=$TRACK_PATH" --test-mode --pipeline=benchmark-only "--target-hosts=$CS_HOST" --user-tags=cluster:cs "--race-id=$CS_IDENT"
 
 # Run the 2 races and output them to the $OUTPUT_DIR in CSV format
 esrally race "--track-path=$TRACK_PATH" --pipeline=benchmark-only "--target-hosts=$ES_HOST" --user-tags=cluster:es "--race-id=$ES_IDENT"  --report-format=csv --report-file="${OUTPUT_DIR}/${ES_IDENT}.csv"
-query_all "$ES_HOST" "/app/queries" "$ES_IDENT"
+query_all "$ES_HOST" "$QUERY_DIR" "$ES_IDENT"
 
 esrally race "--track-path=$TRACK_PATH" --pipeline=benchmark-only "--target-hosts=$CS_HOST" --user-tags=cluster:cs "--race-id=$CS_IDENT" --report-format=csv --report-file="${OUTPUT_DIR}/${CS_IDENT}.csv"
-query_all "$CS_HOST" "/app/queries" "$CS_IDENT"
+query_all "$CS_HOST" "$QUERY_DIR" "$CS_IDENT"
 
 # Run the compare utility
 esrally compare "--baseline=$ES_IDENT" "--contender=$CS_IDENT" --report-format=csv "--report-file=$OUTPUT_DIR/compare-$SECONDS_SINCE_EPOCH.csv"
-
+# Now create the summaries
+create_summaries
 
 # If the PAT is set, we cloned via the URL to be able to push this branch, so add the run and push it.
 if [ -v PAT ]; then
