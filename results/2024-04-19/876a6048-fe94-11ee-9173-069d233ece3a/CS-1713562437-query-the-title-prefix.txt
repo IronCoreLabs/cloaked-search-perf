@@ -1,0 +1,45 @@
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking cloaked-search-v2.cs-perf-test.svc.cluster.local (be patient)
+
+
+Server Software:        
+Server Hostname:        cloaked-search-v2.cs-perf-test.svc.cluster.local
+Server Port:            8675
+
+Document Path:          /so500k/_search
+Document Length:        Variable
+
+Concurrency Level:      5
+Time taken for tests:   3.327 seconds
+Complete requests:      500
+Failed requests:        0
+Total transferred:      3409994 bytes
+Total body sent:        139000
+HTML transferred:       3337994 bytes
+Requests per second:    150.27 [#/sec] (mean)
+Time per request:       33.275 [ms] (mean)
+Time per request:       6.655 [ms] (mean, across all concurrent requests)
+Transfer rate:          1000.79 [Kbytes/sec] received
+                        40.79 kb/s sent
+                        1041.58 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       1
+Processing:    12   33  11.4     27      69
+Waiting:       12   33  11.4     27      69
+Total:         12   33  11.4     28      70
+
+Percentage of the requests served within a certain time (ms)
+  50%     28
+  66%     31
+  75%     42
+  80%     45
+  90%     51
+  95%     58
+  98%     64
+  99%     65
+ 100%     70 (longest request)
