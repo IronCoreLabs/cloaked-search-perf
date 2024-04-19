@@ -133,7 +133,7 @@ create_summaries()
     JUST_FILENAME=$(basename "$filename")
     ES_MS_TIME=$(grep '^50,' "$OUTPUT_DIR/$ES_IDENT-query-$JUST_FILENAME.csv" | cut -d',' -f2)
     CS_MS_TIME=$(grep '^50,' "$OUTPUT_DIR/$CS_IDENT-query-$JUST_FILENAME.csv" | cut -d',' -f2)
-    echo "| $ES_MS_TIME | $CS_MS_TIME | $JUST_FILENAME " >> "$README_FILE"
+    echo "| $ES_MS_TIME | $CS_MS_TIME | $JUST_FILENAME" >> "$README_FILE"
   done
 }
 
