@@ -4,43 +4,41 @@ kind: Kustomization
 namespace: cs-perf-test
 
 resources:
-- k8s/cs-deploy.yaml
-- k8s/cs-svc.yaml
-- k8s/es-sts.yaml
-- k8s/es-svc.yaml
-- k8s/ns.yaml
-- k8s/pvc.yaml
-- k8s/sa.yaml
-- k8s/tsp-sts.yaml
-- k8s/tsp-svc.yaml
-- k8s/secrets.yaml
+- ../cs-deploy.yaml
+- ../cs-svc.yaml
+- ../es-sts.yaml
+- ../es-svc.yaml
+- ../ns.yaml
+- ../pvc.yaml
+- ../sa.yaml
+- ../secrets.yaml
 
 configMapGenerator:
 - files:
-  - k8s/config/perf-test/run.sh
-  - run-500k.sh
-  - queries/the-title
-  - queries/the-title-prefix
+  - ../run.sh
+  - ../../run-500k.sh
+  - ../../queries/the-title
+  - ../../queries/the-title-prefix
   name: cs-perf-app
   options:
     disableNameSuffixHash: true
 - files:
-  - k8s/config/elastic-search/elasticsearch.yml
+  - ../config/elastic-search/elasticsearch.yml
   name: elasticsearch
 - files:
-  - k8s/config/cloaked-search/deploy.json
-  - k8s/config/cloaked-search/indices/so.json
-  - k8s/config/cloaked-search/indices/so500k.json
+  - config/cloaked-search/deploy.json
+  - config/cloaked-search/indices/so.json
+  - config/cloaked-search/indices/so500k.json
   name: cloaked-search-v2
 
 # The version of cs-perf-test (elastic/rally) is specified directly in the cs-perf-test.yaml file, because it's loaded separately.
 images:
 - name: cloaked-search-placeholder
   newName: gcr.io/ironcore-images/cloaked-search
-  newTag: 2.6.0
+  newTag: 2.8.0
 - name: elasticsearch-placeholder
   newName: elasticsearch
   newTag: 8.5.0
 - name: tsp-placeholder
   newName: gcr.io/ironcore-images/tenant-security-proxy
-  newTag: 4.12.1
+  newTag: 4.13.0

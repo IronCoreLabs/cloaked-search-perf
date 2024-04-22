@@ -38,6 +38,8 @@ spec:
             secretKeyRef:
               name: cs-perf-test-env
               key: PAT_USER_NAME
+        - name: KEY_MGMT_TYPE
+          value: "SaaSShield"
         volumeMounts:
         - name: tracks
           mountPath: /tracks
