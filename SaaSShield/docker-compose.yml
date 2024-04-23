@@ -34,6 +34,7 @@ services:
       - ../rally-home:/rally/.rally
       - ../k8s/base/run-500k.sh:/app/run-500k.sh
       - ../k8s/base/queries:/app/queries
+      - ../tracks:/tracks
     image: docker.io/ironcorelabs/rally:2.7.1
     entrypoint: /app/run-500k.sh
     depends_on:
