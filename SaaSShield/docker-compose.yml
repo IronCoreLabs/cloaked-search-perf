@@ -32,10 +32,8 @@ services:
     env_file: test-runner.env
     volumes:
       - ../rally-home:/rally/.rally
-      - ../run-500k.sh:/app/run-500k.sh
-      - ../tracks:/tracks
-      - ../queries:/app/queries
-
+      - ../k8s/base/run-500k.sh:/app/run-500k.sh
+      - ../k8s/base/queries:/app/queries
     image: docker.io/ironcorelabs/rally:2.7.1
     entrypoint: /app/run-500k.sh
     depends_on:

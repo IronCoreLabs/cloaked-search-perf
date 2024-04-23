@@ -1,0 +1,70 @@
+# The performance testing job.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: cs-perf-test-
+  namespace: cs-perf-test
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      serviceAccountName: cs-perf-test
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - name: cs-perf-test
+        image: gcr.io/ironcore-dev-1/rally:2.7.1
+        resources:
+          requests:
+            memory: 300Mi
+            cpu: 2
+        command:
+        - /app/run.sh
+        securityContext:
+          runAsUser: 1000 #This lines up with USER from the rally
+        env:
+        - name: PAT
+          valueFrom:
+            secretKeyRef:
+              name: cs-perf-test-env
+              key: PAT
+        - name: PAT_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: cs-perf-test-env
+              key: PAT_EMAIL
+        - name: PAT_USER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: cs-perf-test-env
+              key: PAT_USER_NAME
+        - name: KEY_MGMT_TYPE
+          value: "Standalone"
+        volumeMounts:
+        - name: tracks
+          mountPath: /tracks
+        - name: rally-cache
+          mountPath: /rally/.rally
+        - name: app
+          mountPath: /app
+      restartPolicy: Never # Create a new pod if this one fails.
+      volumes:
+      - name: tracks
+        persistentVolumeClaim:
+          claimName: tracks
+      - name: rally-cache
+        persistentVolumeClaim:
+          claimName: rally-cache
+      - name: app
+        configMap:
+          name: cs-perf-app
+          defaultMode: 0755
+          items:
+          - key: run.sh
+            path: run.sh
+          - key: run-500k.sh
+            path: run-500k.sh
+          - key: the-title
+            path: queries/the-title
+          - key: the-title-prefix
+            path: queries/the-title-prefix
