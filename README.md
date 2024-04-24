@@ -36,7 +36,7 @@ cd SaaSShield
 docker compose up
 ```
 
-Note that this also binds to the local port 9200 in case you want to poke at the container. If you have a local ES instance you might want to remove the port bindings.
+The results will be in `rally-home/cloaked-search-perf/results`. Note that this also binds to the local port 9200 in case you want to poke at the container. If you have a local ES instance you might want to remove the port bindings.
 
 ### Standalone
 
@@ -49,14 +49,4 @@ cd Standalone
 docker compose up
 ```
 
-Note that this also binds to the local port 9200 in case you want to poke at the container. If you have a local ES instance you might want to remove the port bindings.
-
-### Results
-
-The results will be in `rally-home/cloaked-search-perf/results`.
-
-If you want to run them again you can:
-
-```bash
-docker compose restart test-runner
-```
+The results will be in `rally-home/cloaked-search-perf/results`. Note that this also binds to the local port 9200 in case you want to poke at the container. If you have a local ES instance you might want to remove the port bindings.
