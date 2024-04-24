@@ -23,24 +23,30 @@ docker push gcr.io/ironcore-dev-1/rally:2.7.1
 
 ## Local testing
 
+For local testing, you'll want to run docker compose in one of the following directories, [SaaSShield](SaaSShield) or [Standalone](Standalone).
+
+### SaaSShield
+
+The SaaSShield directory contains a docker compose that starts up Elastic Search, Cloaked Search and the TSP. Cloaked Search is configured to use the TSP for key management and thus each index and search call must make calls to it to get search and encryption keys.
+
 Start up the services and run the test:
 
 ```bash
+cd SaaSShield
 docker compose up
 ```
 
-Note that this also binds to the local port 9200 in case you want to poke at the container. If you have a local ES instance you might want to remove the port bindings.
+The results will be in `rally-home/cloaked-search-perf/results`. Note that this also binds to the local port 9200 in case you want to poke at the container. If you have a local ES instance you might want to remove the port bindings.
 
-The results will be in `rally-home/cloaked-search-perf/results`.
+### Standalone
 
-If you want to run them again you can:
+The Standalone directory contains a docker compose that starts up Elastic Search and Cloaked Search. Cloaked Search is configured to use a standalone key and thus no calls are made from Cloaked Search for key management.
 
-```bash
-docker compose restart test-runner
-```
-
-If you make changes to the `docker-compose.yml` (for ex a new CS image) and want to load them without restarting everything:
+Start up the services and run the test:
 
 ```bash
-docker compose up -d
+cd Standalone
+docker compose up
 ```
+
+The results will be in `rally-home/cloaked-search-perf/results`. Note that this also binds to the local port 9200 in case you want to poke at the container. If you have a local ES instance you might want to remove the port bindings.

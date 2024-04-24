@@ -26,6 +26,12 @@ else
   GIT_URL="https://$PAT@github.com/IronCoreLabs/cloaked-search-perf.git"
 fi
 
+if [[ $KEY_MGMT_TYPE != "Standalone" && $KEY_MGMT_TYPE != "SaaSShield" ]]; then
+    echo "KEY_MGMT_TYPE is neither Standalone nor SaaSShield"
+    exit 1
+fi
+
+
 if [ ! -v PAT_USER_NAME ]; then
   echo "PAT_USER_NAME is not set in the env."
 else
@@ -60,7 +66,7 @@ git config pull.rebase true
 git config user.email "$EMAIL"
 git config user.name "$USERNAME"
 
-OUTPUT_DIR="/rally/.rally/cloaked-search-perf/results/${CURRENT_DATE}/$UUID"
+OUTPUT_DIR="/rally/.rally/cloaked-search-perf/results/${KEY_MGMT_TYPE}/${CURRENT_DATE}/$UUID"
 git checkout -b "$BRANCH_NAME"
 
 # Make the output and get the version info into it
